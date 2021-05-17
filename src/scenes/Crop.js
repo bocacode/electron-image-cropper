@@ -8,6 +8,14 @@ const ORIENTATION_TO_ANGLE = {
   '8': -90,
 }
 
+function readFile(file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.addEventListener('load', () => resolve(reader.result), false)
+    reader.readAsDataURL(file)
+  })
+}
+
 function Crop() {
   const [imageSrc, setImageSrc] = useState(null)
   const [crop, setCrop] = useState({ x: 0, y: 0 })
